@@ -22,7 +22,7 @@ class TeknonymyService implements ITeknonymyService {
    * Method to get a Person Teknonymy Name
    * 
    * @param Person person
-   * @return Boolean which tells if a person has Direct Descendants  
+   * @return Boolean which tells if a person has direct descendants  
    */
   private boolean hasDescendant(Person person){
     if (person.children() == null || person.children().length == 0){
