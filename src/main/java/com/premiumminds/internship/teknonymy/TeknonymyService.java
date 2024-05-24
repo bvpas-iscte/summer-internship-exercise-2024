@@ -14,7 +14,7 @@ class TeknonymyService implements ITeknonymyService {
     if(!hasDescendant(person)){
       return "";
     }
-    DescendantInfo info = findDeepestAndOldestDescendant(person, 0);
+    DescendantInfo info = findDeepestAndOldestDescendant(person, 1);
     return constructTeknonymy(person, info);
   };
 
@@ -77,7 +77,7 @@ class TeknonymyService implements ITeknonymyService {
         relation = "father of ";
       } else {
         relation = "grandfather of ";
-        for (int i = 2; i < info.generation; i++) {
+        for (int i = 3; i <= generationDifference; i++) {
           relation = "great-" + relation;
         }
       }
@@ -86,7 +86,7 @@ class TeknonymyService implements ITeknonymyService {
         relation = "mother of ";
       } else {
         relation = "grandmother of ";
-        for (int i = 2; i < info.generation; i++) {
+        for (int i = 3; i <= generationDifference; i++) {
           relation = "great-" + relation;
         }
       }
@@ -94,6 +94,7 @@ class TeknonymyService implements ITeknonymyService {
 
     return relation + info.person.name();
   }
+
 
  /**
    * Helper class to store information about descendants.
